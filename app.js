@@ -19,6 +19,12 @@ app.get("/", function (req, res) {
 app.post("/", function (req, res) {
 
     const query = req.body.cityName;
+    let firstLetter = query.slice(0,1);
+    let capital = firstLetter.toUpperCase();
+    let restLetters = query.slice(1,query.nameLength);
+    let small = restLetters.toLowerCase();
+
+   
     const unit = "metric";
     const apiKey = "c2ca0829723140bd88bf0985e3e3c642";
     const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + unit + "&appid=" + apiKey;
@@ -71,41 +77,19 @@ app.post("/", function (req, res) {
                     height: 8rem;
                     position: absolute;
                     bottom: 2rem;
-                    left: 2rem;
+                    left: 4rem;
                 }
                 h3{
                     font-family: 'Montserrat', sans-serif;
                     font-size: 2rem;
                     position: absolute;
                     bottom: 2.5rem;
-                    left: 12rem;
+                    left: 14rem;
                 }
-                h4{
-                    font-family: 'Montserrat', sans-serif;
-                    font-size: 1.5rem;
-                    text-align: right;
-                    position: absolute;
-                    bottom: 6rem;
-                    right: 8rem;
+                p{
+                    margin-left: 28rem;
                     text-decoration: underline;
-                }
-                h5{
-                    font-family: 'Montserrat', sans-serif;
-                    font-size: 1.5rem;
-                    text-align: right;
-                    position: absolute;
-                    bottom: 3rem;
-                    right: 8rem;
-                    text-decoration: underline;
-                }
-                h6{
-                    font-family: 'Montserrat', sans-serif;
-                    font-size: 1.5rem;
-                    text-align: right;
-                    position: absolute;
-                    bottom: -0.5rem;
-                    right: 8rem;
-                    text-decoration: underline;
+                    font-size: 1.3rem;
                 }
             </style>`);
 
@@ -113,7 +97,7 @@ app.post("/", function (req, res) {
             <path d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.105-1.25A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724l1-2zm6.352-7.249a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973z"/>
           </svg><h1>My Weather App</h1>`)
 
-            res.write("<div><h2>"+query+"</h2><img src=" + iconURL + "><h3>" + temp + " &degC</h3><h4>Feels like &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" + feelsLike + " &degC</h4><h5>Description &nbsp &nbsp &nbsp"+weatherDescription+"</h5><h6>Wind Speed &nbsp &nbsp &nbsp"+windSpeed+" km/hr</h6>")
+            res.write("<div><h2>"+capital+small+"</h2><img src=" + iconURL + "><h3>" + temp + " &degC</h3><p>Feels like &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" + feelsLike + " &degC</p><p>Description &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+weatherDescription+"</p><p>Wind Speed &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+windSpeed+" km/hr</p>")
 
             res.send();
         })
