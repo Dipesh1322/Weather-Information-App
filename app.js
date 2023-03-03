@@ -57,7 +57,7 @@ app.post("/", function (req, res) {
                 }
                 div{
                     background-color: rgb(149, 187, 189);
-                    height: 15rem;
+                    height: 20rem;
                     width: 50rem;
                     margin: 0.5rem auto;
                     padding: 2rem;
@@ -76,20 +76,31 @@ app.post("/", function (req, res) {
                     width: 8rem;
                     height: 8rem;
                     position: absolute;
-                    bottom: 2rem;
+                    bottom: 7.5rem;
                     left: 4rem;
                 }
                 h3{
                     font-family: 'Montserrat', sans-serif;
                     font-size: 2rem;
                     position: absolute;
-                    bottom: 2.5rem;
+                    bottom: 8.5rem;
                     left: 14rem;
                 }
                 p{
                     margin-left: 28rem;
                     text-decoration: underline;
                     font-size: 1.3rem;
+                }
+                button{
+                    margin-top: 2rem;
+                    font-size: 2rem;
+                    border-radius: 0.5rem;
+                    background-color: rgb(188, 215, 218);
+                }
+                a{
+                    text-decoration: none;
+                    color: black;
+                    margin-right: 0.5rem;
                 }
             </style>`);
 
@@ -99,6 +110,8 @@ app.post("/", function (req, res) {
 
             res.write("<div><h2>"+capital+small+"</h2><img src=" + iconURL + "><h3>" + temp + " &degC</h3><p>Feels like &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" + feelsLike + " &degC</p><p>Description &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+weatherDescription+"</p><p>Wind Speed &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+windSpeed+" km/hr</p>")
 
+            res.write(`<button type="submit"><a href="https://weather-app-9pda.onrender.com/">Search another City</a><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/> </svg>
+            </button>`)
             res.send();
         })
     })
