@@ -58,7 +58,7 @@ app.post("/", function (req, res) {
                 div{
                     background-color: rgb(149, 187, 189);
                     height: 20rem;
-                    width: 50rem;
+                    width: 60rem;
                     margin: 0.5rem auto;
                     padding: 2rem;
                     border-radius: 1.5rem;
@@ -90,9 +90,10 @@ app.post("/", function (req, res) {
                     margin-left: 28rem;
                     text-decoration: underline;
                     font-size: 1.3rem;
+                    
                 }
                 button{
-                    margin-top: 2rem;
+                    margin-top: 10rem;
                     font-size: 2rem;
                     border-radius: 0.5rem;
                     background-color: rgb(188, 215, 218);
@@ -102,13 +103,39 @@ app.post("/", function (req, res) {
                     color: black;
                     margin-right: 0.5rem;
                 }
+                table{
+                    text-align: left;
+                    line-height: 1.5;
+                    position: absolute;
+                    top: 8.2rem;
+                    right: 2rem;
+                    font-size: 1.8rem;
+               }
+               td{
+                padding-left: 2rem;
+               }
             </style>`);
 
             res.write(`<svg class="mb-5" xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-cloud-lightning-rain-fill" viewBox="0 0 16 16">
             <path d="M2.658 11.026a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.5 1.5a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm9.5 0a.5.5 0 0 1 .316.632l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.316zm-7.105-1.25A.5.5 0 0 1 7.5 11h1a.5.5 0 0 1 .474.658l-.28.842H9.5a.5.5 0 0 1 .39.812l-2 2.5a.5.5 0 0 1-.875-.433L7.36 14H6.5a.5.5 0 0 1-.447-.724l1-2zm6.352-7.249a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973z"/>
           </svg><h1>My Weather App</h1>`)
 
-            res.write("<div><h2>"+capital+small+"</h2><img src=" + iconURL + "><h3>" + temp + " &degC</h3><p>Feels like &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" + feelsLike + " &degC</p><p>Description &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+weatherDescription+"</p><p>Wind Speed &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"+windSpeed+" km/hr</p>")
+            res.write("<div><h2>"+capital+small+"</h2><img src=" + iconURL + "><h3>" + temp + " &degC</h3>")
+            res.write(
+            `<table>
+                <tr>
+                    <th>Feels Like</th>
+                    <td>`+feelsLike+`&degC</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>`+weatherDescription+`</td>
+                </tr>
+                <tr>
+                    <th>Wind Speed</th>
+                    <td>`+windSpeed+` km/hr</td>
+                </tr>
+            </table>`)
 
             res.write(`<button type="submit"><a href="https://weather-app-9pda.onrender.com/">Search another City</a><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/> </svg>
             </button>`)
