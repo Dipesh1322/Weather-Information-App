@@ -101,7 +101,9 @@ app.post("/", function (req, res) {
                 a{
                     text-decoration: none;
                     color: black;
-                    margin-right: 0.5rem;
+                }
+                a>svg{
+                    margin-left: 0.5rem;
                 }
                 table{
                     text-align: left;
